@@ -1,0 +1,2 @@
+module StudySpotsHelper
+end

@@ -1,0 +1,1 @@
+json.array! @study_spots, partial: 'study_spots/study_spot', as: :study_spot

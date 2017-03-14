@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1><strong><%= @room.name %></strong></h1>
+<br>
+<table>
+  <thead>
+  <strong>Study Spots:</strong>
+  </thead>
+  <br>
+  <tbody>
+    <% @room.study_spots.each do |study_spot| %>
+      <tr>
+      <% if study_spot.is_open? %>
+        <td><%="Study Spot #{study_spot.id}: is available"%></td>
+      <% else %>
+        <td><%="Study Spot #{study_spot.id}: is occupied"%></td>
+      <% end %>
+      <% if is_admin? %>
+        <td><%= link_to 'Delete', study_spot, method: :delete, data: { confirm: 'Are you sure' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    
+
+<% if is_admin? %>
+  <%= link_to 'Edit Room', edit_room_path(@room) %> |
+  <%= link_to 'Delete Room', @room, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

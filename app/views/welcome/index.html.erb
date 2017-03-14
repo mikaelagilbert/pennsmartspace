@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<!--<html>-->
+  <!--
+  <head>
+    <title>SmartSpace</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+  <!--</head>-->
+  <body class="homepage">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+        <div id="header">
+
+          <!-- Inner -->
+            <div class="inner">
+              <header>
+                <h1><a href="index.html" id="logo">SmartSpace</a></h1>
+                <hr />
+                <p>Find open places to study on campus</p>
+              </header>
+              <footer>
+              <% unless logged_in? %>
+                <%= link_to "Sign Up", new_user_path, class: "button circled scrolly" %>
+                <br>
+                <br>
+                <%= link_to "Login", login_path, class: "button circled scrolly" %>
+              <% end %>
+              </footer>
+            </div>
+
+      <!-- Banner -->
+        <section id="banner">
+          <header>
+            <h2>Find where to study easier and faster.</h2>
+          </header>
+        </section>
+
+      <!-- Carousel -->
+        <section class="carousel">
+          <div class="reel" style="overflow: visible; transform: translate(0px, 0px);">
+          <% @buildings.each do |building| %>
+            <article>
+              <%= link_to image_tag("#{building.name}.jpg"), building, class: "image featured" %> 
+              <header>
+                <h3><strong><%= link_to building.name, building %></strong></h3>
+                <br>
+                <h4> <%= building.address%></h4>
+              </header>
+            </article>
+          <% end %>
+
+          </div>
+          <span class="forward" style="display: block;">
+          </span>
+          <span class="backward" style="display: block;">
+          </span>
+        </section>
+
+      <!-- Footer -->
+        <div id="footer">
+          <div class="container">
+            <div class="row">
+
+              <!-- Posts -->
+                <section class="4u 12u(mobile) -4u">
+                  <ul class="divided">
+                    <li>
+                      <article class="post stub">
+                        <header>
+                          <h3><a href="https://www.linkedin.com/in/mikaela-gilbert-a361baa4">Mikaela Gilbert</a></h3>
+                        </header>
+                        <br>
+                        <span class="timestamp">gmikaela@seas.upenn.edu</span>
+                      </article>
+                    </li>
+                    <li>
+                      <article class="post stub">
+                        <header>
+                          <h3><a href="#">John Paul (JP) Quinn</a></h3>
+                        </header>
+                        <br>
+                        <span class="timestamp">qjohn@seas.upenn.edu</span>
+                      </article>
+                    </li>
+                    <li>
+                      <article class="post stub">
+                        <header>
+                          <h3><a href="https://www.linkedin.com/in/mattraimo">Mathew Raimo</a></h3>
+                        </header>
+                        <br>
+                        <span class="timestamp">mraimo@seas.upenn.edu</span>
+                      </article>
+                    </li>
+                  </ul>
+                </section>
+
+            </div>
+            <hr />
+            <div class="row">
+              <div class="12u">
+
+                <!-- Copyright -->
+                  <div class="copyright">
+                    <ul class="menu">
+                      <li>&copy; SmartSpace. All rights reserved.</li><li>ESE Senior Design 2017</a></li>
+                    </ul>
+                  </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+
+  </body>
+<!--</html>-->

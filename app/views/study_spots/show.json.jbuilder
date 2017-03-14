@@ -1,0 +1,1 @@
+json.partial! "study_spots/study_spot", study_spot: @study_spot

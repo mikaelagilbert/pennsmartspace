@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Favorites:</strong>
+</p>
+<table>
+  <tbody>
+    <% @user.favorites.each do |favorite| %>
+      <tr>
+        <td><%= link_to favorite.name, favorite %></td>
+        <td><%= link_to 'Remove', "/users/#{current_user.id}/#{favorite.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user) %>

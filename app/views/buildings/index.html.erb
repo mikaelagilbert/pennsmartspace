@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buildings with Study Spaces</h1>
+<html>
+  <head>
+    <title>Buildings with Study Spaces</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+  </head>
+  <body>
+  <br>
+  
+    <!-- Wrapper -->
+      <div id="wrapper">
+        <div class="container">
+        <!-- search bar -->
+        <%= form_tag(buildings_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search by Building name" %>
+        <%= submit_tag "Search" %>
+        <% end %>
+        <br>
+        </div>
+
+        <!-- Main -->
+          <div id="main">
+            <div class="inner">
+              <section class="tiles">
+                <% i = 1 %>
+                <% @buildings.each do |building| %>
+                  <article class="style#{i}">
+                  <span>
+                    <%= link_to image_tag("#{building.name}.jpg"), building, class: "image"%>
+                  </span>
+                  <h2><%= link_to building.name, building, class: "section-tile_name" %></h2>
+                  </article>
+                <% end %>
+              </section>
+            </div>
+          </div>
+
+        <% if is_admin? %>
+        <%= link_to 'New Building', new_building_path, class: "button pull-center" %>
+        <% end %>
+      </div>
+
+<br>
+
+  </body>
+</html>

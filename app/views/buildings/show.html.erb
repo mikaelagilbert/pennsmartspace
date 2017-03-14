@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Building:
+  <strong><%= @building.name %></strong>
+</p>
+
+<table>
+  <thead>
+    Rooms:
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @building.rooms.each do |room| %>
+      <tr>
+        <td><%= link_to room.name, room %></td>
+        <% if logged_in? && !is_admin? %>
+          <td><%= link_to 'Add to Favorites', "/users/#{current_user.id}/#{room.id}", method: :post %></td>
+        <% end %>
+        <% if is_admin? %>
+          <td><%= link_to 'Edit', edit_room_path(room) %></td>
+          <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if is_admin? %>
+  <%= link_to 'Edit Building', edit_building_path(@building) %> |
+  <%= link_to 'Delete Building', @building, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
