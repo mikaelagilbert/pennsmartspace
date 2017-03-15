@@ -44,7 +44,7 @@ class StudySpotsController < ApplicationController
       UsageTime.create(start: DateTime.now, end: DateTime.now, study_spot_id: @study_spot.id)
     else
       # update the end time to be the time the study_spot was made available again
-      UsageTime.where(study_spot_id: @study_spot.id).update_attribute(:end, DateTime.now)
+      UsageTime.where(study_spot_id: @study_spot.id).last.update_attribute(:end, DateTime.now)
     end
     status = @study_spot.update_attribute(:is_open, !@study_spot.is_open)
     respond_to do |format|
