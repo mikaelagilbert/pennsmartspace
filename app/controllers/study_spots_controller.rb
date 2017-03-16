@@ -5,6 +5,11 @@ class StudySpotsController < ApplicationController
   # GET /study_spots.json
   def index
     @study_spots = StudySpot.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data UsageTime.all.to_csv }
+    end
   end
 
   # GET /study_spots/1
