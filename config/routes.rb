@@ -57,8 +57,8 @@ Rails.application.routes.draw do
 
   get '/users/new/admin', to: 'users#new_admin'
 
-  put '/study_spots/:id/update_to_occupied', to: 'study_spots#update_to_occupied'
-  put '/study_spots/:id/update_to_available', to: 'study_spots#update_to_available'
+  put '/study_spots/update_to_occupied/:id', to: 'study_spots#update_to_occupied'
+  put '/study_spots/update_to_available/:id', to: 'study_spots#update_to_available'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
