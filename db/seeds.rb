@@ -14,6 +14,9 @@ StudySpot.destroy_all
 admin1 = User.create(name: 'Admin', email: 'admin@admin.com', password: 'admin', 
   is_admin: true)
 
+moore = Building.create(name: 'Moore School Building', address: '200 South 33rd St')
+detkin = Room.create(name: 'Detkin Lab', building_id: moore.id)
+
 huntsman = Building.create(name: 'Huntsman', address: '3730 Locust Walk')
 h1 = Room.create(name: '1st Floor Quiet Study Room', building_id: huntsman.id)
 h2 = Room.create(name: '2nd Floor Quiet Study Room', building_id: huntsman.id)
