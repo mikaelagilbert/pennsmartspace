@@ -63,7 +63,7 @@ class StudySpotsController < ApplicationController
     # end
   end
 
-  def update_to_occupied
+  def spot_taken
     UsageTime.create(start: DateTime.now, end: DateTime.now, study_spot_id: @study_spot.id)
     status = @study_spot.update_attribute(:is_open, false)
     respond_to do |format|
@@ -77,7 +77,7 @@ class StudySpotsController < ApplicationController
     end
   end
 
-  def update_to_available
+  def spot_opened
     UsageTime.where(study_spot_id: @study_spot.id).last.update_attribute(:end, DateTime.now)
     status = @study_spot.update_attribute(:is_open, true)
     respond_to do |format|
