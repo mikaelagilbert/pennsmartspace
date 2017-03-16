@@ -13,7 +13,7 @@
 class StudySpot < ActiveRecord::Base
   validates :is_open, presence: true
   belongs_to :room
-  has_many :usage_times
+  has_many :usage_times, dependent: :destroy
 
   #after_commit { UpdateRelayJob.perform_later(self) }
   # after_update
