@@ -53,12 +53,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post '/users/:id/:room_id', to: 'users#add_favorite'
-  delete 'users/:id/:room_id', to: 'users#remove_favorite'
+  delete '/users/:id/:room_id', to: 'users#remove_favorite'
 
-  get 'users/new/admin', to: 'users#new_admin'
+  get '/users/new/admin', to: 'users#new_admin'
 
-  put 'study_spots/:id/update_to_occupied', to: 'study_spots#update_to_occupied'
-  put 'study_spots/:id/update_to_available', to: 'study_spots#update_to_available'
+  put '/study_spots/:id/update_to_occupied', to: 'study_spots#update_to_occupied'
+  put '/study_spots/:id/update_to_available', to: 'study_spots#update_to_available'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
