@@ -10,6 +10,7 @@ User.destroy_all
 Building.destroy_all
 Room.destroy_all
 StudySpot.destroy_all
+UsageTime.destroy_all
 
 admin1 = User.create(name: 'Admin', email: 'admin@admin.com', password: 'admin', 
   is_admin: true)
