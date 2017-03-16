@@ -7,6 +7,7 @@ class UsageTime < ActiveRecord::Base
       csv << attributes
       all.each do |usage_time|
         csv << usage_time.attributes.values_at(*attributes)
+      end
     end
   end
 end
