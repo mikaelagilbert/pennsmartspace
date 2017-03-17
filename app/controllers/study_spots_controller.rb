@@ -1,5 +1,5 @@
 class StudySpotsController < ApplicationController
-  before_action :set_study_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_study_spot, only: [:show, :edit, :update, :destroy, :spot_taken, :spot_opened]
 
   # GET /study_spots
   # GET /study_spots.json
