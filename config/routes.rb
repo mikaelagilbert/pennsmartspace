@@ -43,11 +43,12 @@
 Rails.application.routes.draw do
   resources :buildings
   resources :rooms
-  resources :study_spots
+  resources :study_spots do
     member do
       put 'spot_opened'
       put 'spot_taken'
     end
+  end
   resources :users
 
   root 'welcome#index'
@@ -60,6 +61,8 @@ Rails.application.routes.draw do
   delete '/users/:id/:room_id', to: 'users#remove_favorite'
 
   get '/users/new/admin', to: 'users#new_admin'
+
+  # put '/study_spots/:id/spot_opened', to: 'study_spots#spot_opened'
 
   # put '/study_spots/update_to_occupied/:id', to: 'study_spots#update_to_occupied'
   # put '/study_spots/update_to_available/:id', to: 'study_spots#update_to_available'
