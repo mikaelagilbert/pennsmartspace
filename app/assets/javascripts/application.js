@@ -22,3 +22,4 @@
 //= require jquery.onvisible.min
 //= require util
 //= require main
+//= require d3.min
