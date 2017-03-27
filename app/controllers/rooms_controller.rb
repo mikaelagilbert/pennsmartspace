@@ -70,6 +70,7 @@ class RoomsController < ApplicationController
         s = [study_spot.id, study_spot.is_open]
         @study_spots << s
       end
+      @study_spots.sort_by { |s| s[0] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
