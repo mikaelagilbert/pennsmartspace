@@ -65,6 +65,11 @@ class RoomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
+      @study_spots = [];
+      @room.study_spots.each do |study_spot|
+        s = [study_spot.id, study_spot.is_open]
+        @study_spots << s
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

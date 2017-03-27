@@ -12,3 +12,12 @@
  *= require bootstrap.min
  *= require helios
  */
+.roomTitle {
+  font-size: 48px;
+  text-align: center;
+}
+
+svg .spot {
+  width: 60px;
+  height: 69.5px;
+}

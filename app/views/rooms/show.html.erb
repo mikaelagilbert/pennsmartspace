@@ -1,3 +1,66 @@
+<!DOCTYPE html>
+  <head>
+  <meta charset="utf-8">
+    <title>D3 Test</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+
+  <h1 class="roomTitle"><strong><%= @room.name %></strong></h1>
+  <body>
+    <script type="text/javascript">
+      var studySpots = <%=raw @study_spots%>
+      //studySpots[0] = study_spot.id
+      //studySpots[1] = study_spot.is_open
+      var w = 1000;
+      var h = 1000;
+      var svg = d3.select("body")
+                   .append("svg")
+                   .attr("align", "center") //not working?
+                   .attr("width", w)
+                   .attr("height", h);
+
+      var spots = svg.selectAll("rect")
+                    .data(studySpots)
+                    .enter()
+                    .append("rect")
+                    .attr("class", "spot")
+                    .attr("x", function (d, i) {
+                      //first column of seats
+                      if (d[0] < 15) {
+                        return 900; 
+                      } else if (d[0] < 27) {
+                        //second column of seats
+                        return 700;
+                      } else if (d[0] < 39) {
+                        //third column of seats
+                        return 400;
+                      } else {
+                        return 200;
+                      }
+                    })
+                    .attr("y", function (d, i) {
+                      if (d[0] < 15) {
+                        return i * (h / 14) + (d[0] % 2) * 1.5;
+                      } else if (d[0] < 27) {
+                        return i * (h / 14) + (d[0] % 2) * 1.5 - h;
+                      } else if (d[0] < 39) {
+                        return i * (h / 14) + (d[0] % 2) * 1.5 - 26 * (h / 14);
+                      } else {
+                        return i * (h / 14) + (d[0] % 2) * 1.5 - 38 * (h / 14);
+                      }
+                    })
+                    .attr("fill", function (d) {
+                      if (d[1]) {
+                        return "rgb(237, 134, 116)";
+                      } else {
+                        return "rgb(122, 122, 122)";
+                      }
+                    });
+
+    </script>
+  </body>
+</html>
+
 <p id="notice"><%= notice %></p>
 <h1><strong><%= @room.name %></strong></h1>
 <br>
