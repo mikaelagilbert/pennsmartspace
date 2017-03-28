@@ -100,14 +100,10 @@
 </html>
 
 <p id="notice"><%= notice %></p>
-<h1><strong><%= @room.name %></strong></h1>
-<br>
 <table>
-  <thead>
-  <strong>Study Spots:</strong>
-  </thead>
   <br>
   <tbody>
+    <% if is_admin? %>
     <% @room.study_spots.each do |study_spot| %>
       <tr>
       <% if study_spot.is_open? %>
@@ -115,10 +111,9 @@
       <% else %>
         <td><%="Study Spot #{study_spot.id}: is occupied"%></td>
       <% end %>
-      <% if is_admin? %>
         <td><%= link_to 'Delete', study_spot, method: :delete, data: { confirm: 'Are you sure' } %></td>
-        <% end %>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
