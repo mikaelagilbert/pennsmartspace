@@ -9,8 +9,8 @@
   <body>
     <script type="text/javascript">
       var studySpots = <%=raw @study_spots%>
-      //studySpots[0] = study_spot.id
-      //studySpots[1] = study_spot.is_open
+      //studySpots[i][0] = study_spot.id
+      //studySpots[i][1] = study_spot.is_open
       var w = 1000;
       var h = 1000;
       var svg = d3.select("body")
@@ -54,6 +54,39 @@
                         return "rgb(237, 134, 116)";
                       } else {
                         return "rgb(122, 122, 122)";
+                      }
+                    });
+      var ids = svg.selectAll("text")
+                    .data(studySpots)
+                    .enter()
+                    .append("text")
+                    .text(function (d) {
+                      return d[0];
+                    })
+                    .attr("x", function (d, i) {
+                      //first column of seats
+                      if (d[0] < 15) {
+                        return 925; 
+                      } else if (d[0] < 27) {
+                        //second column of seats
+                        return 725;
+                      } else if (d[0] < 39) {
+                        //third column of seats
+                        return 425;
+                      } else {
+                        return 225;
+                      }
+                    })
+                    .attr("y", function (d, i) {
+                      var y = i * (h / 14) + (d[0] % 2) * 1.5;
+                      if (d[0] < 15) {
+                        return 40 + y;
+                      } else if (d[0] < 27) {
+                        return 40 + y - h;
+                      } else if (d[0] < 39) {
+                        return 40 + y - 26 * (h / 14);
+                      } else {
+                        return 40 + y - 38 * (h / 14);
                       }
                     });
 
