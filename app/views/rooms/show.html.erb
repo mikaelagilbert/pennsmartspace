@@ -95,6 +95,87 @@
                       }
                     });
 
+      var seats = svg.selectAll("circle")
+                      .data(studySpots)
+                      .enter()
+                      .append("circle")
+                      .attr("r", 20)
+                      .attr("cx", function (d, i) {
+                      //first column of seats
+                      if (d[0] < 15) {
+                        return 875; 
+                      } else if (d[0] < 27) {
+                        //second column of seats
+                        return 785;
+                      } else if (d[0] < 39) {
+                        //third column of seats
+                        return 375;
+                      } else {
+                        return 285;
+                      }
+                    })
+                    .attr("cy", function (d, i) {
+                      var y = i * (h / 14) + (d[0] % 2) * 1.5;
+                      if (d[0] < 15) {
+                        return 40 + y;
+                      } else if (d[0] < 27) {
+                        return 40 + y - h;
+                      } else if (d[0] < 39) {
+                        return 40 + y - 26 * (h / 14);
+                      } else {
+                        return 40 + y - 38 * (h / 14);
+                      }
+                    })
+                    .attr("fill", function (d) {
+                      if (d[1]) {
+                        return "rgb(237, 134, 116)";
+                      } else {
+                        return "rgb(122, 122, 122)";
+                      }
+                    });
+        var seatBacks = svg.selectAll("ellipse")
+                            .data(studySpots)
+                            .enter()
+                            .append("ellipse")
+                            .attr("rx", 23)
+                            .attr("ry", 18)
+                            .attr("cx", function (d, i) {
+                              //first column of seats
+                              if (d[0] < 15) {
+                                return 870; 
+                              } else if (d[0] < 27) {
+                                //second column of seats
+                                return 790;
+                              } else if (d[0] < 39) {
+                                //third column of seats
+                                return 370;
+                              } else {
+                                return 290;
+                              }
+                            })
+                            .attr("cy", function (d, i) {
+                              var y = i * (h / 14) + (d[0] % 2) * 1.5;
+                              if (d[0] < 15) {
+                                return 40 + y;
+                              } else if (d[0] < 27) {
+                                return 40 + y - h;
+                              } else if (d[0] < 39) {
+                                return 40 + y - 26 * (h / 14);
+                              } else {
+                                return 40 + y - 38 * (h / 14);
+                              }
+                            })
+                            .attr("fill", "rgba(0,0,0,0)")
+                            .attr("stroke", function (d) {
+                              if (d[1]) {
+                                return "rgb(237, 134, 116)";
+                              } else {
+                                return "rgb(122, 122, 122)";
+                              }
+                            });
+
+
+
     </script>
   </body>
 </html>

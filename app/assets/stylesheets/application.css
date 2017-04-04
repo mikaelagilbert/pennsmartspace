@@ -21,3 +21,7 @@ svg .spot {
   width: 60px;
   height: 69.5px;
 }
+
+svg .circle {
+  fill: rgb(237, 134, 116);
+}
