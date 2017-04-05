@@ -184,7 +184,7 @@
 <table>
   <br>
   <tbody>
-    <% if is_admin? %>
+    
     <% @room.study_spots.each do |study_spot| %>
       <tr>
       <% if study_spot.is_open? %>
@@ -195,7 +195,7 @@
         <td><%= link_to 'Delete', study_spot, method: :delete, data: { confirm: 'Are you sure' } %></td>
       </tr>
     <% end %>
-    <% end %>
+    
   </tbody>
 </table>
     
